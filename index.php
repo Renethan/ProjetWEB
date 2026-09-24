@@ -1,5 +1,4 @@
-<html>
-<body>
-Hello world
-</body>
-</html>
+<?php
+require_once __DIR__ . '/modules/template/controllers/Homepage.php';
+new \modules\template\controllers\Homepage()->execute();
+?>
