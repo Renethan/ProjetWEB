@@ -9,6 +9,6 @@ class Homepage{
         <h2> Bienvenue sur le site ! </h2>
         <h3> C'était un enfer à faire</h3>
     <?php
-        new Layout('Accueil', 'Accueil du site (temporaire)', ob_get_clean())->show();
+        (new Layout('Accueil', 'Accueil du site (temporaire)', ob_get_clean()))->show();
     }
 }
