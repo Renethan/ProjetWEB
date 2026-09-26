@@ -13,6 +13,13 @@ class Layout{
     <meta name="description" content="<?php echo $this->description; ?>"/>
     <title><?php echo $this->titre; ?></title>
 </head>
+<header>
+    <nav>
+        <a href="/modules/template/controllers/redirection.php?page=homepage">Accueil</a>
+        <a href="/modules/template/controllers/redirection.php?page=compte">Compte</a>
+        <a href="/modules/template/controllers/redirection.php?page=mentions">Mentions légales</a>
+    </nav>
+</header>
 <body>
 <?php echo $this->contenu; ?>
 </body>
