@@ -4,9 +4,9 @@ require_once __DIR__ . '/../views/Homepage.php';
 
 
 use modules\template\views as views;
-class Homepage {
+class homepage {
     public function execute(): void{
-        (new views\Homepage())->show();
+        (new views\homepage())->show();
     }
 
 }

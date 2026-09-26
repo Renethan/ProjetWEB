@@ -5,7 +5,7 @@
     <nav>
         <a href="../../../index.php">Accueil</a>
         | <a href="login.php">Connexion</a>
-        | <a href="inscriptionView.php">Inscription</a>
+        | <a href="Inscription.php">Inscription</a>
     </nav>
     <?php if ($succes): ?>
         <p>Votre compte a été créé. <a href="login.php">Connectez-vous</a>.</p>
@@ -17,7 +17,7 @@
                 <?php endforeach; ?>
             </ul>
         <?php endif; ?>
-    <form action="../controllers/inscriptionController.php" method="post">
+    <form action="../controllers/Inscription.php" method="post">
         <label for="identifiant">identifiant :</label>
         <input name="identifiant" id="identifiant" type="text" required><br>
         <label for="email">email :</label>

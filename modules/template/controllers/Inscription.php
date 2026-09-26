@@ -1,12 +1,10 @@
 <?php
 namespace modules\template\controllers;
-require_once __DIR__ . '/../views/inscriptionView.php';
+require_once __DIR__ . '/../views/Inscription.php';
 
-use modules\template\views\InscriptionView;
-use modules\template\models\InscriptionModel;
 
 use modules\template\views as views;
-class inscriptionController {
+class inscription {
     public function execute(): void{
         $model = new InscriptionModel(); 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') 
