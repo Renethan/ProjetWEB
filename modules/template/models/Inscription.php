@@ -25,6 +25,30 @@ class Inscription {
     }
 
     public function save(array $data): void {
-        // Ici : insertion en base de données, envoi d'email, etc.
+
+        $dbLink = mysqli_connect('mysql-renethan.alwaysdata.net', 'renethan_db_access', 'EPF2NqKT3SVy')
+        or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
+
+        mysqli_select_db($dbLink , 'renethan_projet_web')
+        or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
+
+
+
+        $query = 'INSERT INTO user (identifiant, email, password) VALUES (\''
+            . $data['identifiant'] . '\', \''
+            . $data['email'] .'\', \''
+            . password_hash($data['password'],PASSWORD_DEFAULT) .'\')';
+
+        if(!($dbResult = mysqli_query($dbLink, $query))) {
+            echo 'Erreur dans la requête<br >';
+            // Affiche le type d'erreur.
+
+            echo 'Erreur : ' . mysqli_error($dbLink) . '<br>';
+            // Affiche la requête envoyée.
+            echo 'Requête : ' . $query . '<br>';
+            exit();
+        } else {
+            echo '<br>Bonjour, ' . $data['identifiant'] .' <br> Votre inscription a bien été enregistrée, merci.';
+        }
     }
 }

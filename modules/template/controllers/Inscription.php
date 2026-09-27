@@ -8,15 +8,17 @@ use modules\template\views as views;
 class inscription {
     public function execute(): void{
         $model = new models\Inscription();
-        if ($_POST['action'] === 'mailer') {
+        if (!empty($_POST['action'])) {
             $errors = $model->valider($_POST);
-            /*if (empty($errors)) {
+            if (empty($errors)) {
                 $model->save($_POST);
-            }*/
+            }
             (new views\Inscription($errors))->show();
             return;
         }
         (new views\Inscription())->show();
     }
 }
-(new inscription())->execute();
+if (!empty($_POST['action'])) {
+    (new inscription())->execute();
+}
