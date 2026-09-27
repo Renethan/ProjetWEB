@@ -1,36 +1,43 @@
-<!DOCTYPE html>
-<html lang="fr"> 
-<head> <meta charset="UTF-8"> <title>Inscription</title> </head> 
-<body> <h1>Inscription</h1> 
-    <nav>
-        <a href="../../../index.php">Accueil</a>
-        | <a href="login.php">Connexion</a>
-        | <a href="Inscription.php">Inscription</a>
-    </nav>
-    <?php if ($succes): ?>
-        <p>Votre compte a été créé. <a href="login.php">Connectez-vous</a>.</p>
-    <?php else: ?>
-        <?php if (!empty($erreurs)): ?>
-            <ul>
-                <?php foreach ($erreurs as $erreur): ?>
-                    <li><?= htmlspecialchars($erreur) ?></li>
-                <?php endforeach; ?>
-            </ul>
-        <?php endif; ?>
-    <form action="../controllers/Inscription.php" method="post">
-        <label for="identifiant">identifiant :</label>
-        <input name="identifiant" id="identifiant" type="text" required><br>
-        <label for="email">email :</label>
-        <input name="email" id="email" type="email" value="<?= htmlspecialchars($email) ?>" required><br>
-        <label for="password">mot de passe :</label>
-        <input name="password" id="password" type="password" required><br>
-        <label for="verification-password">vérification du mot de passe :</label>
-        <input name="verification-password" id="verification-password" type="password" required><br>
-        <label for="conditions-générales">conditions générales :</label>
-        <input name="conditions-générales" id="conditions-générales" type="checkbox" required><br>
-        <input type="submit" name="action" value="mailer">Valider</input>
-        <button type="reset">Annuler</button>
-    </form>
-    <?php endif; ?>
-</body>
-</html>
+<?php
+
+namespace modules\template\views;
+
+require_once __DIR__ . '/Layout.php';
+class Inscription{
+    public function __construct(private array $erreurs = []){}
+    public function show(): void {
+        ob_start();?>
+
+            <?php if (!empty($this->erreurs)): ?>
+                <ul>
+                    <?php foreach ($this->erreurs as $erreur): ?>
+                        <li><?= htmlspecialchars($erreur) ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php endif; ?>
+
+            <form action="../controllers/Inscription.php" method="post">
+
+                <label for="identifiant">Identifiant :</label>
+                <input name="identifiant" id="identifiant" type="text"><br>
+
+                <label for="email">Email :</label>
+                <input name="email" id="email" type="email"><br>
+
+                <label for="password">Mot de passe :</label>
+                <input name="password" id="password" type="password"><br>
+                <label for="verification-password">Vérification du mot de passe :</label>
+                <input name="verification-password" id="verification-password" type="password"><br>
+
+                <label for="conditions-générales">Conditions générales d'utilisation:</label>
+                <input name="conditions-générales" id="conditions-générales" type="checkbox" required><br>
+
+                <input type="submit" name="action" value="mailer">Valider
+                <button type="reset">Annuler</button>
+            </form>
+
+
+        <?php
+        (new layout('Inscription', 'Formulaire d\'inscription', ob_get_clean()))->show();
+    }
+}

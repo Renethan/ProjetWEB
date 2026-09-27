@@ -16,7 +16,8 @@ class layout{
 <header>
     <nav>
         <a href="/modules/template/controllers/redirection.php?page=homepage">Accueil</a>
-        <a href="/modules/template/controllers/redirection.php?page=compte">Compte</a>
+        <a href="/modules/template/controllers/redirection.php?page=inscription">Inscription</a>
+        <a href="/modules/template/controllers/redirection.php?page=auth">Authentification</a>
         <a href="/modules/template/controllers/redirection.php?page=mentions">Mentions légales</a>
     </nav>
 </header>
