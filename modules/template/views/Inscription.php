@@ -4,29 +4,30 @@ namespace modules\template\views;
 
 require_once __DIR__ . '/Layout.php';
 class Inscription{
-    public function __construct(private array $erreurs){}
+    public function __construct(private array $erreurs = []){}
     public function show(): void {
         ob_start();?>
 
-            <?php if (!empty($erreurs)): ?>
+            <?php if (!empty($this->erreurs)): ?>
                 <ul>
-                    <?php foreach ($erreurs as $erreur): ?>
+                    <?php foreach ($this->erreurs as $erreur): ?>
                         <li><?= htmlspecialchars($erreur) ?></li>
                     <?php endforeach; ?>
                 </ul>
             <?php endif; ?>
+
             <form action="../controllers/Inscription.php" method="post">
 
                 <label for="identifiant">Identifiant :</label>
-                <input name="identifiant" id="identifiant" type="text" required><br>
+                <input name="identifiant" id="identifiant" type="text"><br>
 
                 <label for="email">Email :</label>
-                <input name="email" id="email" type="email" required><br>
+                <input name="email" id="email" type="email"><br>
 
                 <label for="password">Mot de passe :</label>
-                <input name="password" id="password" type="password" required><br>
+                <input name="password" id="password" type="password"><br>
                 <label for="verification-password">Vérification du mot de passe :</label>
-                <input name="verification-password" id="verification-password" type="password" required><br>
+                <input name="verification-password" id="verification-password" type="password"><br>
 
                 <label for="conditions-générales">Conditions générales d'utilisation:</label>
                 <input name="conditions-générales" id="conditions-générales" type="checkbox" required><br>
