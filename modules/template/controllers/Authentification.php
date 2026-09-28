@@ -22,10 +22,8 @@ class Authentification{
             }
             (new views\Authentification($errors))->show(); // Sinon retour au formulaire avec les erreurs
             return;
+        } else {
+            (new views\Authentification())->show();
         }
-        (new views\Authentification())->show();
     }
-}
-if (!empty($_POST['action'])) {
-    (new Authentification())->execute();
 }

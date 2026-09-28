@@ -16,7 +16,7 @@ class Inscription{
                 </ul>
             <?php endif; ?>
 
-            <form action="../controllers/Inscription.php" method="post">
+            <form action="../../../index.php?page=inscription" method="post">
 
                 <label for="identifiant">Identifiant :</label>
                 <input name="identifiant" id="identifiant" type="text"><br>
