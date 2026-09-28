@@ -15,10 +15,8 @@ class inscription {
             }
             (new views\Inscription($errors))->show();
             return;
+        } else {
+            (new views\Inscription())->show();
         }
-        (new views\Inscription())->show();
     }
-}
-if (!empty($_POST['action'])) {
-    (new inscription())->execute();
 }

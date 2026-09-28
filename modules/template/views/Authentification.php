@@ -16,7 +16,7 @@ class Authentification {
             </ul>
         <?php endif; ?>
 
-        <form action="../controllers/Authentification.php" method="post">
+        <form action="../../../index.php?page=auth" method="post">
 
             <label for="identifiant">Identifiant :</label>
             <input name="identifiant" id="identifiant" type="text"><br>
