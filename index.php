@@ -2,6 +2,7 @@
 require_once __DIR__ . '/modules/template/controllers/Homepage.php';
 require_once __DIR__ . '/modules/template/controllers/Inscription.php';
 require_once __DIR__ . '/modules/template/controllers/Authentification.php';
+require_once __DIR__ . '/modules/template/controllers/Forget.php';
 
 use modules\template\controllers as controllers;
 
@@ -12,6 +13,9 @@ if(isset($_GET['page'])) {
             break;
         case 'inscription':
             (new controllers\Inscription())->execute();
+            break;
+        case 'forget':
+            (new controllers\Forget())->execute();
             break;
         default:
             (new controllers\Homepage())->execute();
