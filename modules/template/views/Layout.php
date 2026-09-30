@@ -13,6 +13,7 @@ class layout{
     <meta name="description" content="<?php echo $this->description; ?>"/>
     <title><?php echo $this->titre; ?></title>
 </head>
+<body>
 <header>
     <nav>
         <a href="/index.php?page=homepage">Accueil</a>
@@ -21,7 +22,7 @@ class layout{
         <a href="/index.php?page=mentions">Mentions légales</a>
     </nav>
 </header>
-<body>
+<h1><?php echo $this->titre; ?></h1>
 <?php echo $this->contenu; ?>
 </body>
 </html>
