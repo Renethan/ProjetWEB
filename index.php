@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 require_once __DIR__ . '/modules/template/controllers/Homepage.php';
 require_once __DIR__ . '/modules/template/controllers/Inscription.php';
 require_once __DIR__ . '/modules/template/controllers/Authentification.php';
@@ -21,6 +23,7 @@ if(isset($_GET['page'])) {
             break;
         case 'reset':
             (new controllers\Reset())->execute();
+            break;
         case 'mentions':
             (new controllers\Mentions())->execute();
             break;

@@ -3,7 +3,6 @@
 namespace modules\template\controllers;
 require_once __DIR__ . '/../views/Authentification.php';
 require_once __DIR__ . '/../models/Authentification.php';
-require_once __DIR__ . '/../../../index.php';
 
 use modules\template\models as models;
 use modules\template\views as views;
@@ -17,6 +16,7 @@ class Authentification{
             $errors = $model->valider($_POST);  // Check les erreurs
             if (empty($errors)) {   // S'il y'a pas d'erreurs
                 $_SESSION['suid'] = session_id();   // Connexion
+                $_SESSION['id'] = $_POST['identifiant'];
                 header('Location: ../../../index.php');
                 exit();
             }

@@ -56,8 +56,6 @@ class Inscription {
             // Affiche la requête envoyée.
             echo 'Requête : ' . $query . '<br>';
             exit();
-        } else {
-            echo '<br>Bonjour, ' . $data['identifiant'] .' <br> Votre inscription a bien été enregistrée, merci.';
         }
     }
 

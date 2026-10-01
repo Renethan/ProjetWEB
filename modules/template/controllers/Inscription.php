@@ -12,6 +12,10 @@ class inscription {
             $errors = $model->valider($_POST);
             if (empty($errors)) {
                 $model->save($_POST);
+                $_SESSION['suid'] = session_id();   // Connexion
+                $_SESSION['id'] = $_POST['identifiant'];
+                header('Location: ../../../index.php');
+                exit();
             }
             (new views\Inscription($errors))->show();
             return;
