@@ -30,18 +30,17 @@ class layout{
     <title><?php echo $this->titre; ?></title>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="/index.php?page=homepage">Accueil</a>
-            <a href="/index.php?page=inscription">Inscription</a>
-            <a href="/index.php?page=auth">Authentification</a>
-            <a href="/index.php?page=mentions">Mentions légales</a>
-        </nav>
-    </header>
-    <main>
-        <?= $this->contenu ?>
-    </main>
- </body>
+<header>
+    <nav>
+        <a href="/index.php?page=homepage">Accueil</a>
+        <a href="/index.php?page=inscription">Inscription</a>
+        <a href="/index.php?page=auth">Authentification</a>
+        <a href="/index.php?page=mentions">Mentions légales</a>
+    </nav>
+</header>
+<h1><?php echo $this->titre; ?></h1>
+<?php echo $this->contenu; ?>
+</body>
 </html>
     <?php
     }
