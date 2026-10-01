@@ -17,6 +17,9 @@ if(isset($_GET['page'])) {
         case 'forget':
             (new controllers\Forget())->execute();
             break;
+        case 'reset':
+            (new controllers\Reset())->execute();
+            break;
         default:
             (new controllers\Homepage())->execute();
             break;
