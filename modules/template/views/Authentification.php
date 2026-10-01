@@ -27,6 +27,7 @@ class Authentification {
             <input type="submit" name="action" value="mailer">Valider
             <button type="reset">Annuler</button>
         </form>
+        <a href="/index.php?page=forget">Mot de passe oublié ?</a>
 
 
         <?php

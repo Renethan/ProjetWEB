@@ -34,9 +34,10 @@ class Inscription {
 
 
 
-        $query = 'INSERT INTO user (identifiant, email, password) VALUES (\''
+        $query = 'INSERT INTO user (identifiant, email, password, pwd_exp_date) VALUES (\''
             . $data['identifiant'] . '\', \''
             . $data['email'] .'\', \''
+            . date('Y-m-d',time()+15778800) .'\',\''
             . password_hash($data['password'],PASSWORD_DEFAULT) .'\')';
 
         if(!($dbResult = mysqli_query($dbLink, $query))) {
