@@ -27,6 +27,9 @@ if(isset($_GET['page'])) {
         case 'mentions':
             (new controllers\Mentions())->execute();
             break;
+        case 'logout':
+            (new controllers\Logout())->execute();
+            break;
         default:
             (new controllers\Homepage())->execute();
             break;

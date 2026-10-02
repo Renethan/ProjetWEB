@@ -15,7 +15,7 @@ class Authentification{
             $errors = $model->valider($_POST);  // Check les erreurs
             if (empty($errors)) {   // S'il y'a pas d'erreurs
                 $_SESSION['suid'] = session_id();   // Connexion
-                $_SESSION['id'] = $_POST['identifiant'];
+                $_SESSION['identifiant'] = $_POST['identifiant'];
                 if ($model->pwd_has_expired($_POST)){ // Date expirée
                     $_SESSION['expire'] = true;
                     header('Location: ../../../index.php?page=reset');

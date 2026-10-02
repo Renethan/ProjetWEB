@@ -9,7 +9,7 @@ class homepage{
         <h2> Bienvenue sur le site ! </h2>
         <?php
         if(isset($_SESSION['suid'])){
-            echo '<h4> Vous êtes actuellement authentifié en tant que ' . $_SESSION['id'] . '</h4>' ;
+            echo '<h4> Vous êtes actuellement authentifié en tant que ' . $_SESSION['identifiant'] . '</h4>' ;
         }
         ?>
      <?php

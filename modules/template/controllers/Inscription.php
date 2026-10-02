@@ -13,7 +13,7 @@ class inscription {
             if (empty($errors)) {
                 $model->save($_POST);
                 $_SESSION['suid'] = session_id();   // Connexion
-                $_SESSION['id'] = $_POST['identifiant'];
+                $_SESSION['identifiant'] = $_POST['identifiant'];
                 header('Location: ../../../index.php');
                 exit();
             }
