@@ -6,6 +6,7 @@ require_once __DIR__ . '/modules/template/controllers/Inscription.php';
 require_once __DIR__ . '/modules/template/controllers/Authentification.php';
 require_once __DIR__ . '/modules/template/controllers/Forget.php';
 require_once __DIR__ . '/modules/template/controllers/Mentions.php';
+require_once __DIR__ . '/modules/template/controllers/Logout.php';
 
 
 use modules\template\controllers as controllers;
