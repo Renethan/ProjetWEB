@@ -14,7 +14,7 @@ class layout{
 <html lang="fr">
 <head>
     <meta charset="utf-8"/>
-    <meta name="description" content="<?php echo $this->description; ?>"/>
+    <meta name="description" content="<?php echo htmlspecialchars($this->description) ?>"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta property="og:title" content="<?php echo htmlspecialchars($this->titre) ?>"/>
     <meta property="og:description" content="<?php echo htmlspecialchars($this->description) ?>"/>
@@ -27,7 +27,7 @@ class layout{
     <?php foreach ($this->styles as $style): ?>
         <link rel="stylesheet" href="/assets/styles/<?php echo htmlspecialchars($style) ?>">
     <?php endforeach; ?>
-    <title><?php echo $this->titre; ?></title>
+    <title><?php echo htmlspecialchars($this->titre) ?></title>
 </head>
 <body>
 <header>
@@ -35,7 +35,7 @@ class layout{
         <a href="/index.php?page=homepage">Accueil</a>
         <?php
         if(isset($_SESSION['suid'])){
-            echo 'Connecté en tant que : ' . $_SESSION['identifiant'];
+            echo 'Connecté en tant que : ' . htmlspecialchars($_SESSION['identifiant']);
             echo '<a href = "/index.php?page=logout" > Déconnexion</a >';
         } else {
             echo '<a href = "/index.php?page=inscription" > Inscription</a >';
@@ -46,8 +46,9 @@ class layout{
 
     </nav>
 </header>
-<h1><?php echo $this->titre; ?></h1>
-<?php echo $this->contenu; ?>
+<main>
+    <?php echo $this->contenu; ?>
+</main>
 </body>
 </html>
     <?php

@@ -1,0 +1,92 @@
+/* CSS basic temporaire */
+
+.homepage {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 60px 40px;
+    background-color: #e3f2f5;
+    border: 1px solid #b8dfe4;
+    border-radius: 12px;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin: 40px 0 70px;
+}
+
+.feature-card {
+    padding: 24px;
+    overflow: hidden;
+    border: 1px solid #dce6e8;
+    border-radius: 12px;
+    background: white;
+}
+
+.intro {
+    max-width: 750px;
+    margin: 70px auto 40px;
+    text-align: center;
+}
+
+.home-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 36px;
+    margin-bottom: 40px;
+    background: #eaf6f7;
+    border-radius: 16px;
+}
+
+.btn {
+    border: 1px solid #087e83;
+    border-radius: 6px;
+}
+
+.btn-primary {
+    background-color: #087e83;
+    color: #ffffff;
+}
+
+.btn-secondary {
+    background-color: #ffffff;
+    color: #087e83;
+}
+
+/* Mobile / Tablet */
+@media (max-width: 700px) {
+    .hero {
+        flex-direction: column;
+        padding: 40px 20px;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+    }
+}
+
+
