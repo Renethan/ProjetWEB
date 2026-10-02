@@ -15,6 +15,12 @@ class Reset{
             </ul>
         <?php endif; ?>
 
+        <?php if(isset($_SESSION['expire'])){
+            if ($_SESSION['expire']) {
+                echo '<p> La validité de votre mot de passe à expiré, veuillez le changer </p>';
+            }
+        } ?>
+
         <p>Pour réinitialiser votre mot de passe, veuillez renseigner votre ancien et nouveau mot de passe. <br>Si vous avez oublié votre mot de passe, veuillez renseigner dans le champ "Ancien mot de passe" le mot de passe temporaire envoyé par mail. </p>
 
         <form action="../../../index.php?page=reset" method="post">

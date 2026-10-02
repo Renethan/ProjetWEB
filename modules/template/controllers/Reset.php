@@ -13,6 +13,9 @@ class Reset{
             $errors = $model->valider($_POST);  // Check les erreurs
             if (empty($errors)) {   // S'il y'a pas d'erreurs
                 $model->update($_POST);
+                unset($_SESSION['expire']);
+                header('Location: index.php?page=homepage');
+                exit();
             }
             (new views\Reset($errors))->show();
             return;

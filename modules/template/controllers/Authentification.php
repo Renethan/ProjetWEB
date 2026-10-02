@@ -10,15 +10,20 @@ class Authentification{
 
     public function __construct(){}
     public function execute(): void{
-        session_start();
         $model = new models\Authentification();
         if (!empty($_POST['action'])) { // Si le formulaire a été rempli
             $errors = $model->valider($_POST);  // Check les erreurs
             if (empty($errors)) {   // S'il y'a pas d'erreurs
                 $_SESSION['suid'] = session_id();   // Connexion
                 $_SESSION['id'] = $_POST['identifiant'];
-                header('Location: ../../../index.php');
-                exit();
+                if ($model->pwd_has_expired($_POST)){ // Date expirée
+                    $_SESSION['expire'] = true;
+                    header('Location: ../../../index.php?page=reset');
+                    exit();
+                } else {
+                    header('Location: ../../../index.php?page=homepage');
+                    exit();
+                }
             }
             (new views\Authentification($errors))->show(); // Sinon retour au formulaire avec les erreurs
             return;
