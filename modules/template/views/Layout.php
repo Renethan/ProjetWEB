@@ -33,9 +33,17 @@ class layout{
 <header>
     <nav>
         <a href="/index.php?page=homepage">Accueil</a>
-        <a href="/index.php?page=inscription">Inscription</a>
-        <a href="/index.php?page=auth">Authentification</a>
+        <?php
+        if(isset($_SESSION['suid'])){
+            echo 'Connecté en tant que : ' . $_SESSION['identifiant'];
+            echo '<a href = "/index.php?page=logout" > Déconnexion</a >';
+        } else {
+            echo '<a href = "/index.php?page=inscription" > Inscription</a >';
+            echo '<a href = "/index.php?page=auth" > Authentification</a >';
+        }
+        ?>
         <a href="/index.php?page=mentions">Mentions légales</a>
+
     </nav>
 </header>
 <h1><?php echo $this->titre; ?></h1>
