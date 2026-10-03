@@ -61,6 +61,5 @@ class Reset{
 
         $query = $pdo->prepare('UPDATE user SET password = :password, pwd_exp_date = :pwd_exp_date WHERE email = :email');
         $query->execute(['password' => password_hash($data['new'],PASSWORD_DEFAULT),'pwd_exp_date' => date('Y-m-d',time()+15778800), 'email' => $data['email']]); // 15778800 secondes = 6 mois
-        }
     }
 }
