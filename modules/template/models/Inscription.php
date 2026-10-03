@@ -49,39 +49,28 @@ class Inscription {
     }
 
     public function value_exists(string $value, string $type) : bool{
-        $dbLink = mysqli_connect('mysql-renethan.alwaysdata.net', 'renethan_db_access', 'EPF2NqKT3SVy')
-        or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
+        $user = 'renethan_db_access';
+        $pass = 'EPF2NqKT3SVy';
 
-        mysqli_select_db($dbLink, 'renethan_projet_web')
-        or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
-
-
-        $query = 'SELECT * FROM user WHERE ' . $type  . ' = \'' . $value . '\';';
-
-
-        if(!($dbResult = mysqli_query($dbLink, $query))) {
-            echo 'Erreur de requête<br>';
-            // Affiche le type d'erreur.
-            echo 'Erreur : ' . mysqli_error($dbLink) . '<br>';
-            // Affiche la requête envoyée.
-            echo 'Requête : ' . $query . '<br>';
-            exit();
+        try {
+            $pdo = new \PDO('mysql:host=mysql-renethan.alwaysdata.net;dbname=renethan_projet_web', $user, $pass);
+        } catch (\PDOException $e) {
+            die('Erreur PDO : ' . $e->getMessage());
         }
 
-        $dbRow = mysqli_fetch_assoc($dbResult);
+        if($type == 'email'){
+            $query = $pdo->prepare('SELECT * FROM user WHERE email = :value');
+        } elseif ($type == 'identifiant'){
+            $query = $pdo->prepare('SELECT * FROM user WHERE identifiant = :value');
+        }
+
+        $query->execute(['value' => $value]);
+
+        $dbRow = $query->fetch();
+
         if (!$dbRow) {
-            return false;
-        } else {
-            if(!($dbResult = mysqli_query($dbLink, $query))) {
-                echo 'Erreur dans la requête<br >';
-                // Affiche le type d'erreur.
-
-                echo 'Erreur : ' . mysqli_error($dbLink) . '<br>';
-                // Affiche la requête envoyée.
-                echo 'Requête : ' . $query . '<br>';
-                exit();
-            }
-            return true;
+            return false; // valeur inconnue
         }
+        return true;
     }
 }
