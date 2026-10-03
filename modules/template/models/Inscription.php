@@ -34,29 +34,18 @@ class Inscription {
 
     public function save(array $data): void {
 
-        $dbLink = mysqli_connect('mysql-renethan.alwaysdata.net', 'renethan_db_access', 'EPF2NqKT3SVy')
-        or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
+        $user = 'renethan_db_access';
+        $pass = 'EPF2NqKT3SVy';
 
-        mysqli_select_db($dbLink , 'renethan_projet_web')
-        or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
-
-
-
-        $query = 'INSERT INTO user (identifiant, email, password, pwd_exp_date) VALUES (\''
-            . $data['identifiant'] . '\', \''
-            . $data['email'] .'\', \''
-            . password_hash($data['password'],PASSWORD_DEFAULT) .'\',\''
-            . date('Y-m-d',time()+15778800) .'\')';
-
-        if(!($dbResult = mysqli_query($dbLink, $query))) {
-            echo 'Erreur dans la requête<br >';
-            // Affiche le type d'erreur.
-
-            echo 'Erreur : ' . mysqli_error($dbLink) . '<br>';
-            // Affiche la requête envoyée.
-            echo 'Requête : ' . $query . '<br>';
-            exit();
+        try {
+            $pdo = new \PDO('mysql:host=mysql-renethan.alwaysdata.net;dbname=renethan_projet_web', $user, $pass);
+        } catch (\PDOException $e) {
+            die('Erreur PDO : ' . $e->getMessage());
         }
+
+
+        $query = $pdo->prepare('INSERT INTO user (identifiant, email, password, pwd_exp_date) VALUES (:identifiant, :email, :password, :pwd_exp_date)');
+        $query->execute(['identifiant' => $data['identifiant'], 'email' => $data['email'], 'password' => password_hash($data['password'],PASSWORD_DEFAULT), 'pwd_exp_date' => date('Y-m-d',time()+15778800)]);
     }
 
     public function value_exists(string $value, string $type) : bool{
