@@ -26,25 +26,21 @@ class Reset{
 
     private function old_pwd_check(array $data): bool {
 
-        $dbLink = mysqli_connect('mysql-renethan.alwaysdata.net', 'renethan_db_access', 'EPF2NqKT3SVy')
-        or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
+        $user = 'renethan_db_access';
+        $pass = 'EPF2NqKT3SVy';
 
-        mysqli_select_db($dbLink, 'renethan_projet_web')
-        or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
-
-        // On ne récupère QUE par l'identifiant, pas par le mot de passe
-        $query = 'SELECT password FROM user WHERE email = \'' . $data['email'] . '\'';
-
-        if(!($dbResult = mysqli_query($dbLink, $query))) {
-            echo 'Erreur de requête<br>';
-            // Affiche le type d'erreur.
-            echo 'Erreur : ' . mysqli_error($dbLink) . '<br>';
-            // Affiche la requête envoyée.
-            echo 'Requête : ' . $query . '<br>';
-            return false;
+        try {
+            $pdo = new \PDO('mysql:host=mysql-renethan.alwaysdata.net;dbname=renethan_projet_web', $user, $pass);
+        } catch (\PDOException $e) {
+            die('Erreur PDO : ' . $e->getMessage());
         }
 
-        $dbRow = mysqli_fetch_assoc($dbResult);
+        // On ne récupère QUE par l'identifiant, pas par le mot de passe
+        $query = $pdo->prepare('SELECT password FROM user WHERE email = :email');
+        $query->execute(['email' => $data['email']]);
+
+        $dbRow = $query->fetch();
+
         if (!$dbRow) {
             return false; // email inconnu
         }
@@ -54,24 +50,17 @@ class Reset{
 
     public function update(array $data): void {
 
-        $dbLink = mysqli_connect('mysql-renethan.alwaysdata.net', 'renethan_db_access', 'EPF2NqKT3SVy')
-        or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
+        $user = 'renethan_db_access';
+        $pass = 'EPF2NqKT3SVy';
 
-        mysqli_select_db($dbLink , 'renethan_projet_web')
-        or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
+        try {
+            $pdo = new \PDO('mysql:host=mysql-renethan.alwaysdata.net;dbname=renethan_projet_web', $user, $pass);
+        } catch (\PDOException $e) {
+            die('Erreur PDO : ' . $e->getMessage());
+        }
 
-
-
-        $query = 'UPDATE user SET password = \'' . password_hash($data['new'],PASSWORD_DEFAULT) . '\', pwd_exp_date = \'' . date('Y-m-d',time()+15778800) . '\' WHERE email = \'' . $data['email'] . '\';';  // 15778800 secondes = 6 mois
-
-        if(!($dbResult = mysqli_query($dbLink, $query))) {
-            echo 'Erreur dans la requête<br >';
-            // Affiche le type d'erreur.
-
-            echo 'Erreur : ' . mysqli_error($dbLink) . '<br>';
-            // Affiche la requête envoyée.
-            echo 'Requête : ' . $query . '<br>';
-            exit();
+        $query = $pdo->prepare('UPDATE user SET password = :password, pwd_exp_date = :pwd_exp_date WHERE email = :email');
+        $query->execute(['password' => password_hash($data['new'],PASSWORD_DEFAULT),'pwd_exp_date' => date('Y-m-d',time()+15778800), 'email' => $data['email']]); // 15778800 secondes = 6 mois
         }
     }
 }
