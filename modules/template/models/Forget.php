@@ -4,38 +4,27 @@ namespace modules\template\models;
 
 class Forget{
     public function pwd_reset(array $data) : void{
-        $dbLink = mysqli_connect('mysql-renethan.alwaysdata.net', 'renethan_db_access', 'EPF2NqKT3SVy')
-        or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
+        $user = 'renethan_db_access';
+        $pass = 'EPF2NqKT3SVy';
 
-        mysqli_select_db($dbLink, 'renethan_projet_web')
-        or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
-
-        $query = 'SELECT * FROM user WHERE email = \'' . $data['email'] . '\'';
-
-        if(!($dbResult = mysqli_query($dbLink, $query))) {
-            echo 'Erreur de requête<br>';
-            // Affiche le type d'erreur.
-            echo 'Erreur : ' . mysqli_error($dbLink) . '<br>';
-            // Affiche la requête envoyée.
-            echo 'Requête : ' . $query . '<br>';
-            exit();
+        try {
+            $pdo = new \PDO('mysql:host=mysql-renethan.alwaysdata.net;dbname=renethan_projet_web', $user, $pass);
+        } catch (\PDOException $e) {
+            die('Erreur PDO : ' . $e->getMessage());
         }
 
-        $dbRow = mysqli_fetch_assoc($dbResult);
+        $query = $pdo->prepare('SELECT * FROM user WHERE email = :email');
+        $query->execute(['email' => $data['email']]);
+
+        $dbRow = $query->fetch();
         if (!$dbRow) {
             exit(); // email inconnu
         } else {
             $password = $this->pwd_generator();
-            $query = 'UPDATE user SET password = \'' . password_hash($password,PASSWORD_DEFAULT) . '\' , pwd_exp_date = \'' . date('Y-m-d',time()-100000) . '\' WHERE email = \'' . $dbRow['email'] . '\'';
-            if(!($dbResult = mysqli_query($dbLink, $query))) {
-                echo 'Erreur dans la requête<br >';
-                // Affiche le type d'erreur.
+            $query = $pdo->prepare('UPDATE user SET password = :password , pwd_exp_date = :date WHERE email = :email');
+            $query->execute(['password' => password_hash($password,PASSWORD_DEFAULT), 'date' => date('Y-m-d',time()-100000), 'email' => $data['email']]);
 
-                echo 'Erreur : ' . mysqli_error($dbLink) . '<br>';
-                // Affiche la requête envoyée.
-                echo 'Requête : ' . $query . '<br>';
-                exit();
-            }
+            $dbRow = $query->fetch();
             $this->sendEmail($dbRow['email'],$password);
         }
     }
