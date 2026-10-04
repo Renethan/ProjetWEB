@@ -7,6 +7,7 @@ require_once __DIR__ . '/modules/template/controllers/Authentification.php';
 require_once __DIR__ . '/modules/template/controllers/Forget.php';
 require_once __DIR__ . '/modules/template/controllers/Mentions.php';
 require_once __DIR__ . '/modules/template/controllers/Logout.php';
+require_once __DIR__ . '/modules/template/controllers/Members.php';
 
 
 use modules\template\controllers as controllers;
@@ -30,6 +31,9 @@ if(isset($_GET['page'])) {
             break;
         case 'logout':
             (new controllers\Logout())->execute();
+            break;
+        case 'members':
+            (new controllers\Members())->execute();
             break;
         default:
             (new controllers\Homepage())->execute();
