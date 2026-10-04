@@ -52,6 +52,7 @@ class layout{
     </nav>
 </header>
 <main>
+    <? echo '<h1>' . $this->titre . '</h1>' ?>
     <?php echo $this->contenu; ?>
 </main>
 <footer class="footer">
