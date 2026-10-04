@@ -65,6 +65,7 @@
 .btn {
     border: 1px solid #087e83;
     border-radius: 6px;
+    text-decoration: none;
 }
 
 .btn-primary {

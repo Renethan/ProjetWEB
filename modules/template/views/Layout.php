@@ -32,23 +32,125 @@ class layout{
 <body>
 <header>
     <nav>
-        <a href="/index.php?page=homepage">Accueil</a>
-        <?php
-        if(isset($_SESSION['suid'])){
-            echo 'Connecté en tant que : ' . htmlspecialchars($_SESSION['identifiant']);
-            echo '<a href = "/index.php?page=logout" > Déconnexion</a >';
-        } else {
-            echo '<a href = "/index.php?page=inscription" > Inscription</a >';
-            echo '<a href = "/index.php?page=auth" > Authentification</a >';
-        }
-        ?>
-        <a href="/index.php?page=mentions">Mentions légales</a>
-
+        <div class="nav-brand">
+            <a href="/index.php?page=homepage">
+                <img src="/assets/images/logo.svg" alt="Aqualité">
+                <span>Aqualité</span>
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="/index.php?page=homepage">Accueil</a>
+            <?php if (isset($_SESSION['suid'])): ?>
+                <span>Connecté en tant que : <?php echo htmlspecialchars($_SESSION['identifiant']) ?></span>
+                <a href="/index.php?page=logout">Déconnexion</a>
+            <?php else: ?>
+                <a href="/index.php?page=inscription">Inscription</a>
+                <a href="/index.php?page=auth">Authentification</a>
+            <?php endif; ?>
+            <a href="/index.php?page=mentions">Mentions légales</a>
+        </div>
     </nav>
 </header>
 <main>
     <?php echo $this->contenu; ?>
 </main>
+<footer class="footer">
+    <div class="footer-container">
+
+        <!-- Logo et petite description -->
+        <div class="footer-brand">
+            <a href="/index.php?page=homepage" class="footer-logo">
+                <img src="/assets/images/logo.svg"
+                     alt="Aqualité - Accueil">
+            </a>
+            <p>
+                Explorez et comprenez la qualité de l'eau
+                en France grâce aux données disponibles dans ta région.
+            </p>
+        </div>
+
+        <!-- Liens de navigation : sauf l'accueil, liens fictifs temporaires-->
+        <div class="footer-section">
+            <h3>Navigation</h3>
+            <ul>
+                <li>
+                    <a href="/index.php?page=homepage">Accueil</a>
+                </li>
+                <li>
+                    <a href="/index.php?page=donnees">Explorer les données</a>
+                </li>
+                <li>
+                    <a href="/index.php?page=informations">Comprendre la qualité de l'eau</a>
+                </li>
+                <li>
+                    <a href="/index.php?page=statistiques">Statistiques</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Legal information -->
+        <div class="footer-section">
+            <h3>Informations</h3>
+            <ul>
+                <li>
+                    <a href="/index.php?page=mentions">Mentions légales</a>
+                </li>
+                <li>
+                    <a href="/index.php?page=confidentialite">Politique de confidentialité</a>
+                </li>
+                <li>
+                    <a href="/index.php?page=contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Liens de réseaux sociaux, temporaires-->
+        <div class="footer-section">
+            <h3>Suivez-nous</h3>
+            <ul>
+                <li>
+                    <a href="https://www.linkedin.com/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="LinkedIn">
+                        <img src="/assets/images/social/linkedin.svg"
+                             alt=""
+                             class="social-icon">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="Instagram">
+                        <img src="/assets/images/social/instagram.svg"
+                             alt=""
+                             class="social-icon">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="Facebook">
+                        <img src="/assets/images/social/facebook.svg"
+                             alt=""
+                             class="social-icon">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Copyright et date -->
+    <div class="footer-bottom">
+        <p>
+            &copy; <?= date('Y') ?>
+            Aqualité.
+            Tous droits réservés.
+        </p>
+    </div>
+</footer>
 </body>
 </html>
     <?php
