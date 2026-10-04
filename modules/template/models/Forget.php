@@ -24,7 +24,6 @@ class Forget{
             $query = $pdo->prepare('UPDATE user SET password = :password , pwd_exp_date = :date WHERE email = :email');
             $query->execute(['password' => password_hash($password,PASSWORD_DEFAULT), 'date' => date('Y-m-d',time()-100000), 'email' => $data['email']]);
 
-            $dbRow = $query->fetch();
             $this->sendEmail($dbRow['email'],$password);
         }
     }
