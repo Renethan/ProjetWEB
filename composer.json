@@ -1,0 +1,6 @@
+{
+    "name": "renethan/projetweb",
+    "require-dev": {
+        "phpunit/phpunit": "^11"
+    }
+}
