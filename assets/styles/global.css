@@ -1,2 +1,145 @@
-/*Body de la page, en-tête, navigation, contenu principal,
+/*CSS : Body de la page, en-tête, navigation, contenu principal,
 pied de page, couleurs et espacements communs a toutes les pages*/
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.nav-brand a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.nav-brand img {
+    width: 40px;
+    height: 40px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Navigation-Tablet */
+@media (max-width: 800px) {
+    nav {
+        flex-direction: column;
+    }
+
+    .nav-links {
+        justify-content: center;
+    }
+}
+
+/* Navigation-Mobile */
+@media (max-width: 500px) {
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+}
+
+/* Footer */
+.footer {
+    background-color: #e4f1f2;
+    border-top: 1px solid #cbdcde;
+    padding: 40px 24px 16px;
+    margin-top: 48px;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-brand img {
+    display: block;
+    width: 140px;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 16px;
+}
+
+.footer-brand p {
+    max-width: 300px;
+    color: #52636a;
+}
+
+.footer-section h3 {
+    font-size: 1rem;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-section li {
+    margin-bottom: 8px;
+}
+
+.site-footer a {
+    color: #176b70;
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    text-decoration: underline;
+}
+
+.site-footer a:focus-visible {
+    outline: 2px solid #176b70;
+    outline-offset: 3px;
+}
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 32px auto 0;
+    padding-top: 16px;
+    border-top: 1px solid #cbdcde;
+    text-align: center;
+    color: #52636a;
+    font-size: 0.9rem;
+}
+
+.social-icon {
+    width: 24px;
+    height: 24px;
+    display: block;
+}
+
+/* Tablet */
+@media (max-width: 850px) {
+    .footer-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Mobile */
+@media (max-width: 500px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .footer {
+        padding: 32px 20px 16px;
+    }
+}
