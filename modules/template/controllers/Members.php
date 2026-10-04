@@ -24,7 +24,6 @@ class Members{
         $page = max(1, min($page, $totalPages));
         $offset = ($page - 1) * $perPage;
         $members = (new models\Members())->find_page($perPage, $offset);
-        var_dump($page, $totalPages);
-        (new views\Members())->show($members);
+        (new views\Members())->show($members, $page, $totalPages);
     }
 }
