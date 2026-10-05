@@ -82,7 +82,7 @@ class homepage{
                     de l'eau et recherchez les données qui vous intéressent.
                 </p>
 
-                <a href="/index.php?page=donnees" class="feature-link">
+                <a href="/index.php?page=members" class="feature-link">
                     Explorer les données →
                 </a>
             </div>
