@@ -27,11 +27,11 @@ class Compte
                 <?php endforeach; ?>
             </ul>
         <?php endif; ?>
-        <form action="/index.php?page=compte&type=delete">
-            <label for="pwd"> Entrez votre mot de passe : </label>
-            <input name="pwd" id="pwd" type="password">
+        <form action="/index.php?page=compte&type=delete" method="post">
+            <label for="password"> Entrez votre mot de passe : </label>
+            <input name="password" id="password" type="password" required>
 
-            <button type="submit">Supprimer le compte</button>
+            <button type="submit" name="action">Supprimer le compte</button>
             <button type="reset">Annuler</button>
         </form>
 

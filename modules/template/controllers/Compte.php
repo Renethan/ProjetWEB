@@ -1,12 +1,13 @@
 <?php
 namespace modules\template\controllers;
 require_once __DIR__ . '/../views/Compte.php';
-//require_once __DIR__ . '/../models/Compte.php';
+require_once __DIR__ . '/../models/Compte.php';
 
 use modules\template\models as models;
 use modules\template\views as views;
 class Compte{
     public function execute(){
+        $model = new models\Compte();
         if(isset($_GET['type'])){
             if($_GET['type'] == 'logout'){
                 session_start();
@@ -16,7 +17,11 @@ class Compte{
                 exit();
             }
             else if($_GET['type'] == 'delete'){
-                //TODO
+                $errors = $model->valider($_POST);  // Check les erreurs
+                if (empty($errors)) {   // S'il y'a pas d'erreurs
+                    //TODO
+                }
+                (new views\Compte($errors))->show(); // Sinon retour au formulaire avec les erreurs
             }
         }
         else{
