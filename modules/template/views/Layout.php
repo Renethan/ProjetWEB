@@ -42,7 +42,7 @@ class layout{
             <a href="/index.php?page=homepage">Accueil</a>
             <?php if (isset($_SESSION['suid'])): ?>
                 <span>Connecté en tant que : <?php echo htmlspecialchars($_SESSION['identifiant']) ?></span>
-                <a href="/index.php?page=logout">Déconnexion</a>
+                <a href="/index.php?page=compte">Compte</a>
             <?php else: ?>
                 <a href="/index.php?page=inscription">Inscription</a>
                 <a href="/index.php?page=auth">Authentification</a>
