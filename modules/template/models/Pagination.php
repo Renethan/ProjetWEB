@@ -12,7 +12,7 @@ class Pagination {
         $this->totalItems = max(0, $totalItems);
         $this->perPage = max(1, $perPage);
         $this->totalPages = max(1, (int)ceil($this->totalItems / $this->perPage));
-        $page = (int) $requestedPage;
+        $page = $requestedPage;
         $this->currentPage = max(1, min($page, $this->totalPages));
     }
     public function getLimit(): int {

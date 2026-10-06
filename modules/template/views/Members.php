@@ -20,27 +20,27 @@ class Members {
         <nav aria-label="Pagination">
             <ul>
                 <li>
-                    <?php if ($page > 1): ?>
-                        <a href="?page=members&p=<?= $page - 1 ?>">Précédent</a>
-                    <?php else: ?>
-                        <span>Précédent</span>
-                    <?php endif; ?>
+                    <?php if ($page > 1):
+                        echo '<a href="?page=members&p=' . ($page - 1) . '">Précédent</a>';
+                    else:
+                        echo '<span>Précédent</span>';
+                    endif; ?>
                 </li>
                 <?php for ($i = 1; $i <= $totalPages; $i++): ?>
                     <li>
-                        <?php if ($i === $page): ?>
-                            <span aria-current="page"><?= $i ?></span>
-                        <?php else: ?>
-                            <a href="?page=members&p=<?= $i ?>"><?= $i ?></a>
-                        <?php endif; ?>
+                        <?php if ($i === $page):
+                            echo '<span aria-current="page">' . $i . '</span>';
+                        else:
+                            echo '<a href="?page=members&p=' . $i . '">' . $i . '</a>';
+                        endif; ?>
                     </li>
                 <?php endfor; ?>
                 <li>
-                    <?php if ($page < $totalPages): ?>
-                        <a href="?page=members&p=<?= $page + 1 ?>">Suivant</a>
-                    <?php else: ?>
-                        <span>Suivant</span>
-                    <?php endif; ?>
+                    <?php if ($page < $totalPages):
+                        echo '<a href="?page=members&p=' . ($page + 1) . '">Suivant</a>';
+                    else:
+                        echo '<span>Suivant</span>';
+                    endif; ?>
                 </li>
             </ul>
         </nav>
