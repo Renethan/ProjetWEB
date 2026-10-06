@@ -34,7 +34,7 @@ class layout{
     <nav>
         <div class="nav-brand">
             <a href="/index.php?page=homepage">
-                <img src="/assets/images/logo.svg" alt="Aqualité">
+                <img src="/assets/images/icons/android-chrome-512x512.png" alt="Aqualité">
                 <span>Aqualité</span>
             </a>
         </div>
@@ -52,6 +52,7 @@ class layout{
     </nav>
 </header>
 <main>
+    <?php echo '<h1>' . $this->titre . '</h1>' ?>
     <?php echo $this->contenu; ?>
 </main>
 <footer class="footer">
@@ -60,7 +61,7 @@ class layout{
         <!-- Logo et petite description -->
         <div class="footer-brand">
             <a href="/index.php?page=homepage" class="footer-logo">
-                <img src="/assets/images/logo.svg"
+                <img src="/assets/images/icons/android-chrome-512x512.png"
                      alt="Aqualité - Accueil">
             </a>
             <p>
