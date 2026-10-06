@@ -6,7 +6,7 @@ require_once __DIR__ . '/modules/template/controllers/Inscription.php';
 require_once __DIR__ . '/modules/template/controllers/Authentification.php';
 require_once __DIR__ . '/modules/template/controllers/Forget.php';
 require_once __DIR__ . '/modules/template/controllers/Mentions.php';
-require_once __DIR__ . '/modules/template/controllers/Logout.php';
+require_once __DIR__ . '/modules/template/controllers/Compte.php';
 require_once __DIR__ . '/modules/template/controllers/Members.php';
 
 
@@ -29,8 +29,8 @@ if(isset($_GET['page'])) {
         case 'mentions':
             (new controllers\Mentions())->execute();
             break;
-        case 'logout':
-            (new controllers\Logout())->execute();
+        case 'compte':
+            (new controllers\Compte())->execute();
             break;
         case 'members':
             (new controllers\Members())->execute();
