@@ -33,4 +33,20 @@ class Compte{
         return password_verify($data['password'], $dbRow['password']);
     }
 
+    public function delete(array $data): void {
+
+        $user = 'renethan_db_access';
+        $pass = 'EPF2NqKT3SVy';
+
+        try {
+            $pdo = new \PDO('mysql:host=mysql-renethan.alwaysdata.net;dbname=renethan_projet_web', $user, $pass);
+        } catch (\PDOException $e) {
+            die('Erreur PDO : ' . $e->getMessage());
+        }
+
+
+        $query = $pdo->prepare('DELETE FROM user WHERE identifiant = :identifiant');
+        $query->execute(['identifiant' => $_SESSION['identifiant']]);
+    }
+
 }

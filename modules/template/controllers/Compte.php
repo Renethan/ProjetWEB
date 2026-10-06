@@ -19,7 +19,12 @@ class Compte{
             else if($_GET['type'] == 'delete'){
                 $errors = $model->valider($_POST);  // Check les erreurs
                 if (empty($errors)) {   // S'il y'a pas d'erreurs
-                    //TODO
+                    $model->delete($_POST);
+                    session_start();
+                    session_unset(); // vide toutes les variables de session
+                    session_destroy();
+                    header('Location: /index.php?page=homepage');
+                    exit();
                 }
                 (new views\Compte($errors))->show(); // Sinon retour au formulaire avec les erreurs
             }
