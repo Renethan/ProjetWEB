@@ -6,7 +6,7 @@ require_once __DIR__ . '/Layout.php';
 
 class Account
 {
-    public function __construct(array $errors = []){}
+    public function __construct(array $erreurs = []){}
     public function show(): void {
         ob_start();?>
 

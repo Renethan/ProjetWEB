@@ -42,7 +42,7 @@ class Forget{
         $headers .= "From: renethan@alwaysdata.net\r\n";
 
         if (!mail($email, 'Réinitialisation de mot de passe', $message, $headers)) {
-            throw new Exception("L'envoi du mail a échoué.");
+            throw new \Exception("L'envoi du mail a échoué.");
         }
     }
 }
