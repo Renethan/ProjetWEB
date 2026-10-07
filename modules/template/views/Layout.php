@@ -1,7 +1,7 @@
 <?php
 
 namespace modules\template\views;
-class layout{
+class Layout{
     public function __construct(
             private string $titre,
             private string $description ,

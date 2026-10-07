@@ -35,7 +35,7 @@ class Mentions {
 
         <?php
 
-            (new layout('Mentions', 'Page mentions légales', ob_get_clean()))->show();
+            (new Layout('Mentions', 'Page mentions légales', ob_get_clean()))->show();
 
     }
 }

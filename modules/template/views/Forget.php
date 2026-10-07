@@ -19,6 +19,6 @@ class Forget{
 
 
         <?php
-        (new layout('Réinitialisation de mot-de-passe', 'Réinitialisation de mot-de-passe oublié', ob_get_clean()))->show();
+        (new Layout('Réinitialisation de mot-de-passe', 'Réinitialisation de mot-de-passe oublié', ob_get_clean()))->show();
     }
 }

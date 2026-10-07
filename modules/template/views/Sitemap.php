@@ -19,6 +19,6 @@ class Sitemap{
         </ul>
 
         <?php
-        (new layout('Plan du site', 'Lien vers toutes les pages du site', ob_get_clean()))->show();
+        (new Layout('Plan du site', 'Lien vers toutes les pages du site', ob_get_clean()))->show();
     }
 }
