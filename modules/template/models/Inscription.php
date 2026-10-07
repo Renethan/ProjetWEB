@@ -1,7 +1,7 @@
 <?php
 
 namespace modules\template\models;
-
+require_once __DIR__ . '/Database.php';
 class Inscription {
 
     public function valider(array $data): array {
@@ -34,29 +34,14 @@ class Inscription {
 
     public function save(array $data): void {
 
-        $user = 'renethan_db_access';
-        $pass = 'EPF2NqKT3SVy';
-
-        try {
-            $pdo = new \PDO('mysql:host=mysql-renethan.alwaysdata.net;dbname=renethan_projet_web', $user, $pass);
-        } catch (\PDOException $e) {
-            die('Erreur PDO : ' . $e->getMessage());
-        }
-
+        $pdo = Database::getConnection();
 
         $query = $pdo->prepare('INSERT INTO user (identifiant, email, password, pwd_exp_date) VALUES (:identifiant, :email, :password, :pwd_exp_date)');
         $query->execute(['identifiant' => $data['identifiant'], 'email' => $data['email'], 'password' => password_hash($data['password'],PASSWORD_DEFAULT), 'pwd_exp_date' => date('Y-m-d',time()+15778800)]);
     }
 
     public function value_exists(string $value, string $type) : bool{
-        $user = 'renethan_db_access';
-        $pass = 'EPF2NqKT3SVy';
-
-        try {
-            $pdo = new \PDO('mysql:host=mysql-renethan.alwaysdata.net;dbname=renethan_projet_web', $user, $pass);
-        } catch (\PDOException $e) {
-            die('Erreur PDO : ' . $e->getMessage());
-        }
+        $pdo = Database::getConnection();
 
         if($type == 'email'){
             $query = $pdo->prepare('SELECT * FROM user WHERE email = :value');
