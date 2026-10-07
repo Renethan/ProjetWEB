@@ -8,6 +8,7 @@ require_once __DIR__ . '/modules/template/controllers/Forget.php';
 require_once __DIR__ . '/modules/template/controllers/Mentions.php';
 require_once __DIR__ . '/modules/template/controllers/Compte.php';
 require_once __DIR__ . '/modules/template/controllers/Members.php';
+require_once __DIR__ . '/modules/template/controllers/Sitemap.php';
 
 
 use modules\template\controllers as controllers;
@@ -34,6 +35,9 @@ if(isset($_GET['page'])) {
             break;
         case 'members':
             (new controllers\Members())->execute();
+            break;
+        case 'sitemap':
+            (new controllers\Sitemap())->execute();
             break;
         default:
             (new controllers\Homepage())->execute();

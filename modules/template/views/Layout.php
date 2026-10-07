@@ -94,15 +94,12 @@ class layout{
             <h3>Informations</h3>
             <ul>
                 <li>
+                    <a href="/index.php?page=sitemap">Plan du site</a>
+                </li>
+                <li>
                     <a href="/index.php?page=mentions">Mentions légales</a>
                 </li>
-                <li>
-                    <a href="/index.php?page=confidentialite">Politique de confidentialité</a>
-                </li>
-                <li>
-                    <a href="/index.php?page=contact">Contact</a>
-                </li>
-            </ul>
+                            </ul>
         </div>
 
         <!-- Liens de réseaux sociaux, temporaires-->
