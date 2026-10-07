@@ -36,6 +36,6 @@ class Compte
         </form>
 
         <?php
-        (new layout('Compte', 'Gestion du compte', ob_get_clean()))->show();
+        (new Layout('Compte', 'Gestion du compte', ob_get_clean()))->show();
     }
 }

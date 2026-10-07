@@ -1,7 +1,7 @@
 <?php
 
 namespace modules\template\views;
-class layout{
+class Layout{
     public function __construct(
             private string $titre,
             private string $description ,
@@ -39,7 +39,6 @@ class layout{
             </a>
         </div>
         <div class="nav-links">
-            <a href="/index.php?page=homepage">Accueil</a>
             <?php if (isset($_SESSION['suid'])): ?>
                 <span>Connecté en tant que : <?php echo htmlspecialchars($_SESSION['identifiant']) ?></span>
                 <a href="/index.php?page=compte">Compte</a>
@@ -47,7 +46,6 @@ class layout{
                 <a href="/index.php?page=inscription">Inscription</a>
                 <a href="/index.php?page=auth">Authentification</a>
             <?php endif; ?>
-            <a href="/index.php?page=mentions">Mentions légales</a>
         </div>
     </nav>
 </header>
@@ -94,15 +92,12 @@ class layout{
             <h3>Informations</h3>
             <ul>
                 <li>
+                    <a href="/index.php?page=sitemap">Plan du site</a>
+                </li>
+                <li>
                     <a href="/index.php?page=mentions">Mentions légales</a>
                 </li>
-                <li>
-                    <a href="/index.php?page=confidentialite">Politique de confidentialité</a>
-                </li>
-                <li>
-                    <a href="/index.php?page=contact">Contact</a>
-                </li>
-            </ul>
+                            </ul>
         </div>
 
         <!-- Liens de réseaux sociaux, temporaires-->

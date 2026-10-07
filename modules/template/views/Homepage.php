@@ -2,7 +2,7 @@
 
 namespace modules\template\views;
 require_once __DIR__ . '/Layout.php';
-class homepage{
+class Homepage{
     public function __construct(){}
     public function show(): void {
         ob_start();?>
@@ -159,7 +159,7 @@ class homepage{
 </div>
         <?php
         $content = ob_get_clean();
-        (new layout(
+        (new Layout(
                 'Accueil',
                 'Découvrez les données sur la qualité de l’eau en France',
                 $content,

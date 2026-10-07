@@ -40,6 +40,6 @@ class Reset{
 
 
         <?php
-        (new layout('Réinitialisation de mot-de-passe', 'Réinitialisation de mot-de-passe', ob_get_clean()))->show();
+        (new Layout('Réinitialisation de mot-de-passe', 'Réinitialisation de mot-de-passe', ob_get_clean()))->show();
     }
 }

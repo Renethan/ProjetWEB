@@ -38,6 +38,6 @@ class Inscription{
 
 
         <?php
-        (new layout('Inscription', 'Formulaire d\'inscription', ob_get_clean()))->show();
+        (new Layout('Inscription', 'Formulaire d\'inscription', ob_get_clean()))->show();
     }
 }

@@ -31,6 +31,6 @@ class Authentification {
 
 
         <?php
-        (new layout('Connexion', 'Formulaire de connexion', ob_get_clean()))->show();
+        (new Layout('Connexion', 'Formulaire de connexion', ob_get_clean()))->show();
     }
 }

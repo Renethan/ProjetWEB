@@ -45,6 +45,6 @@ class Members {
             </ul>
         </nav>
         <?php
-        (new layout('Membres', 'Liste des membres', ob_get_clean()))->show();
+        (new Layout('Membres', 'Liste des membres', ob_get_clean()))->show();
     }
 }
