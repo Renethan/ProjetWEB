@@ -3,7 +3,7 @@
 namespace modules\template\views;
 
 require_once __DIR__ . '/Layout.php';
-class Inscription{
+class Signup{
     public function __construct(private array $erreurs = []){}
     public function show(): void {
         ob_start();?>
@@ -38,6 +38,6 @@ class Inscription{
 
 
         <?php
-        (new Layout('Inscription', 'Formulaire d\'inscription', ob_get_clean()))->show();
+        (new Layout('Signup', 'Formulaire d\'inscription', ob_get_clean()))->show();
     }
 }

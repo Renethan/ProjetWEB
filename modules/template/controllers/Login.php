@@ -1,16 +1,16 @@
 <?php
 
 namespace modules\template\controllers;
-require_once __DIR__ . '/../views/Authentification.php';
-require_once __DIR__ . '/../models/Authentification.php';
+require_once __DIR__ . '/../views/Login.php';
+require_once __DIR__ . '/../models/Login.php';
 
 use modules\template\models as models;
 use modules\template\views as views;
-class Authentification{
+class Login{
 
     public function __construct(){}
     public function execute(): void{
-        $model = new models\Authentification();
+        $model = new models\Login();
         if (!empty($_POST['action'])) { // Si le formulaire a été rempli
             $errors = $model->valider($_POST);  // Check les erreurs
             if (empty($errors)) {   // S'il y'a pas d'erreurs
@@ -25,10 +25,10 @@ class Authentification{
                     exit();
                 }
             }
-            (new views\Authentification($errors))->show(); // Sinon retour au formulaire avec les erreurs
+            (new views\Login($errors))->show(); // Sinon retour au formulaire avec les erreurs
             return;
         } else {
-            (new views\Authentification())->show();
+            (new views\Login())->show();
         }
     }
 }

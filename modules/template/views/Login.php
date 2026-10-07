@@ -3,7 +3,7 @@
 namespace modules\template\views;
 require_once __DIR__ . '/Layout.php';
 
-class Authentification {
+class Login {
     public function __construct(private array $erreurs = []){}
     public function show(): void {
         ob_start();?>

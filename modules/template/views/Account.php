@@ -4,7 +4,7 @@ namespace modules\template\views;
 
 require_once __DIR__ . '/Layout.php';
 
-class Compte
+class Account
 {
     public function __construct(array $errors = []){}
     public function show(): void {
@@ -36,6 +36,6 @@ class Compte
         </form>
 
         <?php
-        (new Layout('Compte', 'Gestion du compte', ob_get_clean()))->show();
+        (new Layout('Account', 'Gestion du compte', ob_get_clean()))->show();
     }
 }

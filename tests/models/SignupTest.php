@@ -1,9 +1,9 @@
 
 <?php
 use PHPUnit\Framework\TestCase;
-use modules\template\models\Inscription;
+use modules\template\models\Signup;
 
-require_once __DIR__ . '/../../modules/template/models/Inscription.php';
+require_once __DIR__ . '/../../modules/template/models/Signup.php';
 
 final class InscriptionTest extends TestCase
 {
@@ -60,9 +60,9 @@ final class InscriptionTest extends TestCase
         $this->assertArrayHasKey('verification-password', $errors);
     }
 
-    private function model(bool $exists = false): Inscription
+    private function model(bool $exists = false): Signup
     {
-    return new class($exists) extends Inscription {
+    return new class($exists) extends Signup {
         public function __construct(private bool $exists) {}
         public function value_exists(string $value, string $type): bool
         {

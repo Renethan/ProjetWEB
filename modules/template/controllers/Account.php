@@ -1,13 +1,13 @@
 <?php
 namespace modules\template\controllers;
-require_once __DIR__ . '/../views/Compte.php';
-require_once __DIR__ . '/../models/Compte.php';
+require_once __DIR__ . '/../views/Account.php';
+require_once __DIR__ . '/../models/Account.php';
 
 use modules\template\models as models;
 use modules\template\views as views;
-class Compte{
-    public function execute(){
-        $model = new models\Compte();
+class Account{
+    public function execute() : void{
+        $model = new models\Account();
         if(isset($_GET['type'])){
             if($_GET['type'] == 'logout'){
                 session_start();
@@ -26,11 +26,11 @@ class Compte{
                     header('Location: /index.php?page=homepage');
                     exit();
                 }
-                (new views\Compte($errors))->show(); // Sinon retour au formulaire avec les erreurs
+                (new views\Account($errors))->show(); // Sinon retour au formulaire avec les erreurs
             }
         }
         else{
-            (new views\Compte())->show();
+            (new views\Account())->show();
         }
     }
 }

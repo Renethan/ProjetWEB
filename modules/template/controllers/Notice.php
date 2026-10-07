@@ -1,12 +1,12 @@
 <?php
 namespace modules\template\controllers;
-require_once __DIR__ . '/../views/Mentions.php';
+require_once __DIR__ . '/../views/Notice.php';
 
 
 use modules\template\views as views;
-class Mentions {
+class Notice {
     public function execute(): void{
-        (new views\Mentions())->show();
+        (new views\Notice())->show();
     }
 
 }

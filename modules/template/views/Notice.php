@@ -2,9 +2,9 @@
 namespace modules\template\views;
 require_once __DIR__ . '/Layout.php';
 
-class Mentions {
+class Notice {
     public function show(): void {
-        $page_title = "Mentions Légales: Aqualité";
+        $page_title = "Notice Légales: Aqualité";
         $main_heading = "MENTIONS LÉGALES";
         $current_year = date("Y");
 
@@ -35,7 +35,7 @@ class Mentions {
 
         <?php
 
-            (new Layout('Mentions', 'Page mentions légales', ob_get_clean()))->show();
+            (new Layout('Notice', 'Page mentions légales', ob_get_clean()))->show();
 
     }
 }

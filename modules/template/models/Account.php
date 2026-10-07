@@ -3,7 +3,7 @@
 namespace modules\template\models;
 require_once __DIR__ . '/Database.php';
 
-class Compte{
+class Account{
     public function valider(array $data): array {
         $errors = [];
         if(!$this->pwd_check($data)) {

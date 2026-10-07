@@ -2,7 +2,7 @@
 
 namespace modules\template\models;
 require_once __DIR__ . '/Database.php';
-class Inscription {
+class Signup {
 
     public function valider(array $data): array {
         $errors = [];

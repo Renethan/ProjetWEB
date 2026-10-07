@@ -1,13 +1,13 @@
 <?php
 namespace modules\template\controllers;
-require_once __DIR__ . '/../views/Inscription.php';
-require_once __DIR__ . '/../models/Inscription.php';
+require_once __DIR__ . '/../views/Signup.php';
+require_once __DIR__ . '/../models/Signup.php';
 
 use modules\template\models as models;
 use modules\template\views as views;
-class inscription {
+class Signup {
     public function execute(): void{
-        $model = new models\Inscription();
+        $model = new models\Signup();
         if (!empty($_POST['action'])) {
             $errors = $model->valider($_POST);
             if (empty($errors)) {
@@ -17,10 +17,10 @@ class inscription {
                 header('Location: ../../../index.php');
                 exit();
             }
-            (new views\Inscription($errors))->show();
+            (new views\Signup($errors))->show();
             return;
         } else {
-            (new views\Inscription())->show();
+            (new views\Signup())->show();
         }
     }
 }
