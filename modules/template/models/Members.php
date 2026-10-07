@@ -1,16 +1,11 @@
 <?php
 namespace modules\template\models;
+require_once __DIR__ . '/Database.php';
+
 class Members{
     public function find_all(): array
     {
-        $user = 'renethan_db_access';
-        $pass = 'EPF2NqKT3SVy';
-
-        try {
-            $pdo = new \PDO('mysql:host=mysql-renethan.alwaysdata.net;dbname=renethan_projet_web', $user, $pass);
-        } catch (\PDOException $e) {
-            die('Erreur PDO : ' . $e->getMessage());
-        }
+        $pdo = Database::getConnection();
 
         $query = $pdo->prepare('SELECT identifiant FROM user');
         $query->execute();

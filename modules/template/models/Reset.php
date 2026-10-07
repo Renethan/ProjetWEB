@@ -1,6 +1,7 @@
 <?php
 
 namespace modules\template\models;
+require_once __DIR__ . '/Database.php';
 
 class Reset{
     public function valider(array $data): array {
@@ -26,14 +27,7 @@ class Reset{
 
     private function old_pwd_check(array $data): bool {
 
-        $user = 'renethan_db_access';
-        $pass = 'EPF2NqKT3SVy';
-
-        try {
-            $pdo = new \PDO('mysql:host=mysql-renethan.alwaysdata.net;dbname=renethan_projet_web', $user, $pass);
-        } catch (\PDOException $e) {
-            die('Erreur PDO : ' . $e->getMessage());
-        }
+        $pdo = Database::getConnection();
 
         // On ne récupère QUE par l'identifiant, pas par le mot de passe
         $query = $pdo->prepare('SELECT password FROM user WHERE email = :email');
@@ -49,15 +43,7 @@ class Reset{
     }
 
     public function update(array $data): void {
-
-        $user = 'renethan_db_access';
-        $pass = 'EPF2NqKT3SVy';
-
-        try {
-            $pdo = new \PDO('mysql:host=mysql-renethan.alwaysdata.net;dbname=renethan_projet_web', $user, $pass);
-        } catch (\PDOException $e) {
-            die('Erreur PDO : ' . $e->getMessage());
-        }
+        $pdo = Database::getConnection();
 
         $query = $pdo->prepare('UPDATE user SET password = :password, pwd_exp_date = :pwd_exp_date WHERE email = :email');
         $query->execute(['password' => password_hash($data['new'],PASSWORD_DEFAULT),'pwd_exp_date' => date('Y-m-d',time()+15778800), 'email' => $data['email']]); // 15778800 secondes = 6 mois

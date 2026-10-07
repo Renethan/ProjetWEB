@@ -1,6 +1,7 @@
 <?php
 
 namespace modules\template\models;
+require_once __DIR__ . '/Database.php';
 
 class Compte{
     public function valider(array $data): array {
@@ -13,14 +14,7 @@ class Compte{
 
     private function pwd_check(array $data): bool {
 
-        $user = 'renethan_db_access';
-        $pass = 'EPF2NqKT3SVy';
-
-        try {
-            $pdo = new \PDO('mysql:host=mysql-renethan.alwaysdata.net;dbname=renethan_projet_web', $user, $pass);
-        } catch (\PDOException $e) {
-            die('Erreur PDO : ' . $e->getMessage());
-        }
+        $pdo = Database::getConnection();
 
         $query = $pdo->prepare('SELECT password FROM user WHERE identifiant = :identifiant');
         $query->execute([':identifiant' => $_SESSION['identifiant']]);
@@ -35,15 +29,7 @@ class Compte{
 
     public function delete(array $data): void {
 
-        $user = 'renethan_db_access';
-        $pass = 'EPF2NqKT3SVy';
-
-        try {
-            $pdo = new \PDO('mysql:host=mysql-renethan.alwaysdata.net;dbname=renethan_projet_web', $user, $pass);
-        } catch (\PDOException $e) {
-            die('Erreur PDO : ' . $e->getMessage());
-        }
-
+        $pdo = Database::getConnection();
 
         $query = $pdo->prepare('DELETE FROM user WHERE identifiant = :identifiant');
         $query->execute(['identifiant' => $_SESSION['identifiant']]);

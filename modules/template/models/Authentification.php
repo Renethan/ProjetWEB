@@ -1,6 +1,7 @@
 <?php
 
 namespace modules\template\models;
+require_once __DIR__ . '/Database.php';
 
 class Authentification{
     public function valider(array $data): array {
@@ -16,15 +17,7 @@ class Authentification{
     }
 
     private function login_check(array $data): bool {
-
-        $user = 'renethan_db_access';
-        $pass = 'EPF2NqKT3SVy';
-
-        try {
-            $pdo = new \PDO('mysql:host=mysql-renethan.alwaysdata.net;dbname=renethan_projet_web', $user, $pass);
-        } catch (\PDOException $e) {
-            die('Erreur PDO : ' . $e->getMessage());
-        }
+        $pdo = Database::getConnection();
 
         // On ne récupère QUE par l'identifiant, pas par le mot de passe
         $query = $pdo->prepare('SELECT password FROM user WHERE identifiant = :identifiant');
@@ -40,14 +33,7 @@ class Authentification{
 
     public function pwd_has_expired(array $data): bool {
 
-        $user = 'renethan_db_access';
-        $pass = 'EPF2NqKT3SVy';
-
-        try {
-            $pdo = new \PDO('mysql:host=mysql-renethan.alwaysdata.net;dbname=renethan_projet_web', $user, $pass);
-        } catch (\PDOException $e) {
-            die('Erreur PDO : ' . $e->getMessage());
-        }
+        $pdo = Database::getConnection();
 
         $query = $pdo->prepare('SELECT pwd_exp_date FROM user WHERE identifiant = :identifiant');
         $query->execute(['identifiant' => $data['identifiant']]);
