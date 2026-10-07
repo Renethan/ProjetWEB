@@ -1,6 +1,13 @@
 /*CSS : Body de la page, en-tête, navigation, contenu principal,
 pied de page, couleurs et espacements communs a toutes les pages*/
 
+/*H1*/
+h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* Navigation */
 nav {
     display: flex;
