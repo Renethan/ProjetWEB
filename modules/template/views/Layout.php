@@ -39,7 +39,6 @@ class Layout{
             </a>
         </div>
         <div class="nav-links">
-            <a href="/index.php?page=homepage">Accueil</a>
             <?php if (isset($_SESSION['suid'])): ?>
                 <span>Connecté en tant que : <?php echo htmlspecialchars($_SESSION['identifiant']) ?></span>
                 <a href="/index.php?page=compte">Compte</a>
@@ -47,7 +46,6 @@ class Layout{
                 <a href="/index.php?page=inscription">Inscription</a>
                 <a href="/index.php?page=auth">Authentification</a>
             <?php endif; ?>
-            <a href="/index.php?page=mentions">Mentions légales</a>
         </div>
     </nav>
 </header>
